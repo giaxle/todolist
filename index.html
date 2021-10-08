@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>To Do List</title>
+</head>
+<body>
+
+    <header>
+        <h1>TO DO LIST: Get it done (ouo)</h1>
+    </header>
+    <div class="container">
+        <div class="listsContainer">
+            <h2>Projects</h2>
+            <hr>
+            <ul id="projectList"></ul>
+            <form id="newProjectForm" class="form" autocomplete="off">
+                <button class="projectAddBtn">+</button>
+                <input id="projectInput" type="text" placeholder="New Project">
+            </form>
+        </div>
+        <div id="taskBlock">
+            <div class="tasksContainer">
+                <h2 id="projectTitle">Project Tasks</h2>
+                <hr>
+                <div id="taskList"></div>
+                <form id="newTaskForm" class="form" autocomplete="off">
+                    <button id="taskAddBtn">+</button>
+                    <input id="taskInput" type="text" placeholder="New Task">
+                </form>
+            </div>
+            <div class="taskListBtnsContainer">
+                <button id="clearTasks">Clear completed tasks</button>
+                <button id="deleteProject">Delete project</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <template id="taskTemplate">
+        <div class="task">
+            <input name="checkbox1" type="checkbox">
+            <label for="checkbox1" class="taskName">
+                <span class="customCheck"></span>
+            </label>
+        </div>
+    </template>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
