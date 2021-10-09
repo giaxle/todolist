@@ -33,26 +33,35 @@ class Project {
     }
 }
 
-// task class and constructor
-// class Task {
-//     cosntructor(name) {
-//         this.name = name;
-//         this.id = Date.now().toString();
-//         this.complete = false;
-//     }
-// }
-
 function createTask(name) {
     return { id: Date.now().toString(), name: name, complete: false };
 }
 
 // event listeners
+
+// sets selectedProjectId to the current selected project list
 projectList.addEventListener('click', e => {
     if (e.target.tagName.toLowerCase() === 'li') {
         selectedProjectId = e.target.dataset.projectId;
         saveAndRender();
     }
 });
+
+// removes completes tasks in project list
+taskList.addEventListener('click', e => {
+    if (e.target.tagName.toLowerCase() === 'input') {
+        const selectedProject = projects.find(project => project.id === selectedProjectId)
+        const selectedTask = selectedProject.tasks.find(task => task.id === e.target.id)
+        selectedTask.complete = e.target.checked;
+        save()
+    }
+})
+
+clearTasksBtn.addEventListener('click', e => {
+    const selectedProject = projects.find(project => project.id === selectedProjectId)
+    selectedProject.tasks = selectedProject.tasks.filter(task => !task.complete)
+    saveAndRender();
+})
 
 deleteListBtn.addEventListener('click', e => {
     projects = projects.filter(project => project.id !== selectedProjectId);
